@@ -86,11 +86,12 @@ namespace IdentityServer4
             _context.HttpContext.Response.Cookies.Append(
                 name,
                 data,
-                new CookieOptions
+                new Microsoft.AspNetCore.Http.CookieOptions
                 {
                     HttpOnly = true,
                     Secure = Secure,
-                    Path = CookiePath
+                    Path = CookiePath,
+                    Domain = _options.CookieOptions.Domain
                 });
         }
 
@@ -131,12 +132,13 @@ namespace IdentityServer4
             _context.HttpContext.Response.Cookies.Append(
                 name,
                 ".",
-                new CookieOptions
+                new Microsoft.AspNetCore.Http.CookieOptions
                 {
                     Expires = new DateTime(2000, 1, 1),
                     HttpOnly = true,
                     Secure = Secure,
-                    Path = CookiePath
+                    Path = CookiePath,
+                    Domain = _options.CookieOptions.Domain
                 });
         }
 

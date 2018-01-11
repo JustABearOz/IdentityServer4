@@ -1,4 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -9,6 +9,14 @@ namespace IdentityServer4.Configuration
     /// </summary>
     public class IdentityServerOptions
     {
+        /// <summary>
+        /// Gets or sets the cookie options for this service instance e.g. http://myissuer.com
+        /// </summary>
+        /// <value>
+        /// The cookie options.
+        /// </value>
+        public CookieOptions CookieOptions { get; set; } = new CookieOptions();
+
         /// <summary>
         /// Gets or sets the unique name of this server instance, e.g. https://myissuer.com.
         /// If not set, the issuer name is inferred from the request

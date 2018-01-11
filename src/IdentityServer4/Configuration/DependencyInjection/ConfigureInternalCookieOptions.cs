@@ -1,4 +1,4 @@
-﻿using IdentityServer4.Extensions;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -29,6 +29,7 @@ namespace IdentityServer4.Configuration
                 options.LoginPath = ExtractLocalUrl(_idsrv.UserInteraction.LoginUrl);
                 options.LogoutPath = ExtractLocalUrl(_idsrv.UserInteraction.LogoutUrl);
                 options.ReturnUrlParameter = _idsrv.UserInteraction.LoginReturnUrlParameter;
+                options.Cookie.Domain = _idsrv.CookieOptions.Domain;
             }
 
             if (name == IdentityServerConstants.ExternalCookieAuthenticationScheme)

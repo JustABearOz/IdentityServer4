@@ -360,18 +360,21 @@ namespace IdentityServer4.Services
             }
         }
 
-        private CookieOptions CreateSessionIdCookieOptions()
+        private Microsoft.AspNetCore.Http.CookieOptions CreateSessionIdCookieOptions()
         {
             var secure = HttpContext.Request.IsHttps;
             var path = HttpContext.GetIdentityServerBasePath().CleanUrlPath();
 
-            var options = new CookieOptions
+            var options = new Microsoft.AspNetCore.Http.CookieOptions
             {
                 HttpOnly = false,
                 Secure = secure,
                 Path = path,
-                SameSite = SameSiteMode.None
+                SameSite = SameSiteMode.None,
+                Domain = Options.CookieOptions.Domain
             };
+
+            Logger.LogInformation($"Cookie Domain Configured to {Options?.CookieOptions?.Domain}");
 
             return options;
         }
